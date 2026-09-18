@@ -14,6 +14,7 @@ import os
 URI = os.getenv("NEO4J_URI")
 USERNAME = os.getenv("NEO4J_USERNAME")
 PASSWORD = os.getenv("NEO4J_PASSWORD")
+DATABASE = os.getenv("NEO4J_DATABASE")
 
 driver = GraphDatabase.driver(
     URI,
@@ -40,7 +41,7 @@ def get_network_data():
     LIMIT 1500
     """
 
-    with driver.session(database="neo4j") as session:
+    with driver.session(database=DATABASE) as session:
         return list(session.run(query))
 
 
